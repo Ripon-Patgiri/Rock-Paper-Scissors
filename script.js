@@ -8,22 +8,32 @@ function game()
 {
     for(let i = 0 ; i < 5 ; i++)
     {
+        alert("Round " + (i + 1));
         playerSelection = prompt("Rock - Paper - Scissors : Enter Pick : ").toLowerCase();
         computerSelection = computerPlay();
+        alert(computerSelection);
         let result = playRound(playerSelection,computerSelection);
-        if (result == "Tie")
-        {
-            continue;
-        }
-        else if (result == "Win")
-        {
-            playerWin++;
-        }
-        else if ( result == "Lose")
-        {
-            computerWin++;
-        }
+        roundWinner(result);
+        alert("Player Score : " + playerWin);
+        alert("Computer Score : " + computerWin);
     }
+    totalWinner();
+}
+
+function roundWinner(result)
+{
+    if (result == "Win")
+    {
+        playerWin += 1;
+    }
+    else if ( result == "Lose")
+    {
+        computerWin += 1;
+    }
+}
+
+function totalWinner()
+{
     if (playerWin > computerWin)
     {
         alert("Player Wins");
@@ -50,7 +60,7 @@ function computerPlay()
     {
         return "paper";
     }
-    else
+    else if (random == 2)
     {
         return "scissors";
     }
