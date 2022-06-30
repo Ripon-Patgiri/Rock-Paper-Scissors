@@ -1,37 +1,63 @@
+// Variables to store R, P, S.
 let playerSelection;
 let computerSelection;
+
+// Variables to keep count of Scores
 let playerWin = 0;
 let computerWin = 0;
 
 // Function where game play starts
 function game()
-{
+{   
+    // For loop to have 5 rounds
     for(let i = 0 ; i < 5 ; i++)
     {
+        // Show Round No.
         alert("Round " + (i + 1));
-        playerSelection = prompt("Rock - Paper - Scissors : Enter Pick : ").toLowerCase();
+
+        // Prompt user to pick a thing
+        playerSelection = prompt("Enter Pick : ").toLowerCase();
         computerSelection = computerPlay();
+
+        // Show computers selection for the round.
         alert(computerSelection);
+
+        // Call playRound function to play one round
         let result = playRound(playerSelection,computerSelection);
-        roundWinner(result);
+
+        // Call roundWinner to find the winner of a round.
+        let winner = roundWinner(result);
+
+
+        alert("Round " + (i +1) + " winner : " + winner);
         alert("Player Score : " + playerWin);
         alert("Computer Score : " + computerWin);
     }
+    // Call totalWinner to declare the ultimate winner
     totalWinner();
 }
 
+// Function to determine the winner of a particular round.
 function roundWinner(result)
 {
     if (result == "Win")
     {
         playerWin += 1;
+        return "Player";
     }
     else if ( result == "Lose")
     {
         computerWin += 1;
+        return "Computer";
     }
+    else
+    {
+        return "Tie";
+    }
+
 }
 
+// Function to calculate the ultimate winner of the game
 function totalWinner()
 {
     if (playerWin > computerWin)
