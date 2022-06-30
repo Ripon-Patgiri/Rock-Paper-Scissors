@@ -1,3 +1,43 @@
+let playerSelection;
+let computerSelection;
+let playerWin = 0;
+let computerWin = 0;
+
+// Function where game play starts
+function game()
+{
+    for(let i = 0 ; i < 5 ; i++)
+    {
+        playerSelection = prompt("Rock - Paper - Scissors : Enter Pick : ").toLowerCase();
+        computerSelection = computerPlay();
+        let result = playRound(playerSelection,computerSelection);
+        if (result == "Tie")
+        {
+            continue;
+        }
+        else if (result == "Win")
+        {
+            playerWin++;
+        }
+        else if ( result == "Lose")
+        {
+            computerWin++;
+        }
+    }
+    if (playerWin > computerWin)
+    {
+        alert("Player Wins");
+    }
+    else if(computerWin > playerWin)
+    {
+        alert("Computer Wins");
+    }
+    else
+    {
+        alert("Its a Tie");
+    }
+}
+
 // Function to assign computer a selection
 function computerPlay()
 {
@@ -16,37 +56,35 @@ function computerPlay()
     }
 }
 
-let computerSelecton = computerPlay();
-console.log(computerSelecton);
-let playerSelection = prompt("Rock - Paper - Scissors : Enter Pick : ").toLowerCase();
-
 // Function to play a round of Rock Paper Scissors
-function playRound(playerSelection,computerSelecton)
+function playRound(playerSelection,computerSelection)
 {
-    if (playerSelection == computerSelecton)
+    if (playerSelection == computerSelection)
     {
         return "Tie";
     }
     else if(playerSelection == "rock")
     {
-        if(computerSelecton == "paper")
+        if(computerSelection == "paper")
             return "Lose";
         else
             return "Win";
     }
     else if(playerSelection == "paper")
     {
-        if(computerSelecton == "rock")
+        if(computerSelection == "rock")
             return "Win";
         else
             return "Lose";
     }
     else if(playerSelection == "scissors")
     {
-        if(computerSelecton == "rock")
+        if(computerSelection == "rock")
             return "Lose";
         else
             return "Win";
     }
 
 }
+
+game();
