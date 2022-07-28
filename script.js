@@ -59,17 +59,13 @@ function roundWinner(result)
 // Function to calculate the ultimate winner of the game
 function totalWinner()
 {
-    if (playerWin > computerWin)
+    if (playerWin == 5)
     {
         alert("Player Wins");
     }
-    else if(computerWin > playerWin)
+    else if(computerWin == 5)
     {
         alert("Computer Wins");
-    }
-    else
-    {
-        alert("Its a Tie");
     }
 }
 
@@ -94,6 +90,8 @@ function computerPlay()
 // Function to play a round of Rock Paper Scissors
 function playRound(playerSelection,computerSelection)
 {
+    console.log(playerSelection);
+    console.log(computerSelection);
     if (playerSelection == computerSelection)
     {
         return "Tie";
@@ -122,4 +120,11 @@ function playRound(playerSelection,computerSelection)
 
 }
 
-game();
+//game();
+const rockbtn = document.querySelector('#rockbtn');
+const paperbtn = document.querySelector('#paperbtn');
+const scissorsbtn = document.querySelector('#scissorsbtn');
+
+rockbtn.addEventListener('click',() => playRound("rock",computerPlay()));
+paperbtn.addEventListener('click',() => playRound("paper",computerPlay()));
+scissorsbtn.addEventListener('click',() => playRound("scissors",computerPlay()));
