@@ -38,7 +38,8 @@ function playRound(playerSelection,computerSelection) {
             + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
 
         if (playerWin == 5) {
-            result += '<br><br>You won the game! Reload the page to play again'
+            result += '<br><br>You won the game! Reload the page to play again';
+            disableButtons();
         }
     }
     else if (playerSelection == computerSelection) {
@@ -51,12 +52,19 @@ function playRound(playerSelection,computerSelection) {
             + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
 
         if (computerWin == 5) {
-            result += '<br><br>I won the game! Reload the page to play again'
+            result += '<br><br>I won the game! Reload the page to play again';
+            disableButtons();
         }
     }
 
     document.getElementById('result').innerHTML = result
     return
+}
+
+function disableButtons(){
+    rockbtn.disabled = true;
+    paperbtn.disabled = true;
+    scissorsbtn.disabled = true;
 }
 
 const rockbtn = document.querySelector('#rockbtn');
