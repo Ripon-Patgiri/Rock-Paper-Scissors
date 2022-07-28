@@ -7,8 +7,7 @@ let playerWin = 0;
 let computerWin = 0;
 
 // Function where game play starts
-function game()
-{   
+/* function game() {   
     // For loop to have 5 rounds
     for(let i = 0 ; i < 5 ; i++)
     {
@@ -35,7 +34,7 @@ function game()
     }
     // Call totalWinner to declare the ultimate winner
     totalWinner();
-}
+} */
 
 // Function to determine the winner of a particular round.
 function roundWinner(result)
