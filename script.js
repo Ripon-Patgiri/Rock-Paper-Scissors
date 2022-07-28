@@ -6,69 +6,6 @@ let computerSelection;
 let playerWin = 0;
 let computerWin = 0;
 
-// Function where game play starts
-/* function game() {   
-    // For loop to have 5 rounds
-    for(let i = 0 ; i < 5 ; i++)
-    {
-        // Show Round No.
-        alert("Round " + (i + 1));
-
-        // Prompt user to pick a thing
-        playerSelection = prompt("Enter Pick : ").toLowerCase();
-        computerSelection = computerPlay();
-
-        // Show computers selection for the round.
-        alert(computerSelection);
-
-        // Call playRound function to play one round
-        let result = playRound(playerSelection,computerSelection);
-
-        // Call roundWinner to find the winner of a round.
-        let winner = roundWinner(result);
-
-
-        alert("Round " + (i +1) + " winner : " + winner);
-        alert("Player Score : " + playerWin);
-        alert("Computer Score : " + computerWin);
-    }
-    // Call totalWinner to declare the ultimate winner
-    totalWinner();
-} */
-
-// Function to determine the winner of a particular round.
-function roundWinner(result)
-{
-    if (result == "Win")
-    {
-        playerWin += 1;
-        return "Player";
-    }
-    else if ( result == "Lose")
-    {
-        computerWin += 1;
-        return "Computer";
-    }
-    else
-    {
-        return "Tie";
-    }
-
-}
-
-// Function to calculate the ultimate winner of the game
-function totalWinner()
-{
-    if (playerWin == 5)
-    {
-        alert("Player Wins");
-    }
-    else if(computerWin == 5)
-    {
-        alert("Computer Wins");
-    }
-}
-
 // Function to assign computer a selection
 function computerPlay()
 {
@@ -88,39 +25,40 @@ function computerPlay()
 }
 
 // Function to play a round of Rock Paper Scissors
-function playRound(playerSelection,computerSelection)
-{
-    console.log(playerSelection);
-    console.log(computerSelection);
-    if (playerSelection == computerSelection)
-    {
-        return "Tie";
+function playRound(playerSelection,computerSelection) {
+    let result = ""
+    result = ('Player Selection : ' + playerSelection + '<br>Computer Selection : ' + computerSelection);
+
+    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection == 'paper') ||
+        (playerSelection == 'paper' && computerSelection == 'rock')) {
+        
+        playerWin += 1
+        result += ('<br>You win! ' + playerSelection + ' beats ' + computerSelection
+            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
+
+        if (playerWin == 5) {
+            result += '<br><br>You won the game! Reload the page to play again'
+        }
     }
-    else if(playerSelection == "rock")
-    {
-        if(computerSelection == "paper")
-            return "Lose";
-        else
-            return "Win";
+    else if (playerSelection == computerSelection) {
+        result += ('<br>It\'s a tie. You both chose ' + playerSelection
+            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
     }
-    else if(playerSelection == "paper")
-    {
-        if(computerSelection == "rock")
-            return "Win";
-        else
-            return "Lose";
-    }
-    else if(playerSelection == "scissors")
-    {
-        if(computerSelection == "rock")
-            return "Lose";
-        else
-            return "Win";
+    else {
+        computerWin += 1
+        result += ('<br>You lose! ' + computerSelection + ' beats ' + playerSelection
+            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
+
+        if (computerWin == 5) {
+            result += '<br><br>I won the game! Reload the page to play again'
+        }
     }
 
+    document.getElementById('result').innerHTML = result
+    return
 }
 
-//game();
 const rockbtn = document.querySelector('#rockbtn');
 const paperbtn = document.querySelector('#paperbtn');
 const scissorsbtn = document.querySelector('#scissorsbtn');
