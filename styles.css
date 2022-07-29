@@ -1,0 +1,58 @@
+:root {
+    --primary-light: rgb(245, 235, 235);
+    --primary-dark: #424242;
+    --secondary-dark: #393e46;
+    --secondary-dark-hover: #4a4f57;
+    --secondary-dark-active: #5b5f68;
+    --header: #282a2e;
+    --primary-yellow: #fac650;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
+    border: 0.5px solid white;
+}
+
+body {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    font-family: 'Roboto', sans-serif;
+    line-height: 2;
+    /* Footer Support*/
+    margin-bottom: 100px;
+}
+
+button {
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+    background-color: var(--header);
+    border: 1px solid white;
+}
+
+.title {
+    font-size: 48px;
+    color: var(--primary-yellow);
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
