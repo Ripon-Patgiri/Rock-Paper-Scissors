@@ -7,7 +7,40 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
+
+    <header class="header">
+        <h1 class="title">Rock Paper Scissors</h1>
+    </header>
+
+    <main class="main">
+
+        <div class="scoreboard">
+            <h2 class="score-info" id="scoreInfo">Choose Your Sign</h2>
+            <h3 class="score-message" id="scoreMessage">First to Score 5 Points WINS!!</h3>
+            <div class="scores-container">
+                <div class="score-box">
+                    <div class="sign" id="playerSign">?</div>
+                    <p class="score" id="playerScore">Player: 0</p>
+                    <div class="sign" id="computerSign">?</div>
+                    <p class="score" id="computerScore">Computer: 0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-square" id="rockBtn">
+                <div class="sign">Rock</div>
+            </button>
+            <button class="btn btn-square" id="paperBtn">
+                <div class="sign">Paper</div>
+            </button>
+            <button class="btn btn-square" id="scissorsBtn">
+                <div class="sign">Scissors</div>
+            </button>
+        </div>
+
+    </main>
+
     <button class="rock" id="rockbtn">Rock</button>
     <button class="paper" id="paperbtn">Paper</button>
     <button class="scissors" id="scissorsbtn">Scissors</button>
