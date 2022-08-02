@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b7c220ca6a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -50,10 +51,22 @@
 
     <footer class="footer">
         <p>By Ripon Patgiri</p>
-        <p>Github</p>
-        <p>LinkedIn</p>
-        <p>Blog</p>
+        <a href="https://github.com/Ripon-Patgiri" target="_blank">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ripon-patgiri-0319b7139/" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://decodingthemultiverse.wordpress.com/" target="_blank">
+            <i class="fa-brands fa-wordpress"></i>
+        </a>
     </footer>
+
+    <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button class="btn btn-restart" id="restartbtn">Play Again</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
 
     <script type="text/javascript" src="script.js"></script>
 </body>
