@@ -1,7 +1,7 @@
 :root {
-    --primary-light: rgb(245, 235, 235);
+    --primary-light: rgb(243, 242, 242);
     --primary-dark: #424242;
-    --secondary-dark: #393e46;
+    --secondary-dark: #aaabac;
     --secondary-dark-hover: #4a4f57;
     --secondary-dark-active: #5b5f68;
     --header: #282a2e;
@@ -55,4 +55,122 @@ button {
     font-size: 48px;
     color: var(--primary-yellow);
     font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+/* MAIN */
+
+.main {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.scoreboard {
+    margin-bottom: 30px;
+}
+
+.score-info {
+    font-size: 48px;
+}
+
+.score-message {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.scores-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.score-box {
+    width: 200px;
+}
+
+.score {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.btn {
+    border-radius: 4px;
+    background-color: var(--secondary-dark);
+    border: 1px solid wheat;
+}
+
+.btn-square {
+    width: 90px;
+    height: 90px;
+}
+
+.btn:hover {
+    background-color: var(--secondary-dark-hover);
+}
+
+.btn:active {
+    background-color : var(--secondary-dark-active);
+}
+
+.sign {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    color: var(--primary-light);
+    background-color: var(--header);
+    border: 1px solid white;
+}
+
+.fa-github {
+    color: wheat;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-linkedin {
+    color: wheat;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-wordpress {
+    color: wheat;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg)scale(1.2);
+}
+
+.fa-linkedin:hover {
+    transform: rotate(360deg)scale(1.2);
+}
+
+.fa-wordpress:hover {
+    transform: rotate(360deg)scale(1.2);
 }
