@@ -151,5 +151,25 @@ function openEndgameModal() {
 }
 
 function closeEndgameModal() {
-    
+    endgameModal.classList.remove('active');
+    overlay.classList.remove('active');
 }
+
+function setFinalMessage() {
+    return playerScore > computerScore
+        ? (endgameMsg.textContent = 'You WON🥳️')
+        : (endgameMsg.textContent = 'You LOST🤧')
+}
+
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    scoreInfo.textContent = 'Choose Your Sign';
+    scoreMessage.textContent = 'First to Score 5 Points WINS!';
+    playerScorePara.textContent = 'Player: 0'
+    computerScorePara.textContent = 'Computer: 0'
+    playerSign.textContent = '❌'
+    computerSign.textContent = '❌'
+    endgameModal.classList.remove('active')
+    overlay.classList.remove('active')
+  }
