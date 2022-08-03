@@ -1,10 +1,32 @@
+// GAME WORKINGS
+
 // Variables to store R, P, S.
 let playerSelection;
 let computerSelection;
 
 // Variables to keep count of Scores
-let playerWin = 0;
-let computerWin = 0;
+let playerScore = 0;
+let computerScore = 0;
+let roundWinner = '';
+
+// Function to play a round of Rock Paper Scissors
+function playRound(playerSelection,computerSelection) {
+    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection == 'paper') ||
+        (playerSelection == 'paper' && computerSelection == 'rock')) {
+        
+        playerScore++;
+        roundWinner = 'player';
+    }
+    else if (playerSelection == computerSelection) {
+        roundWinner = 'tie';
+    }
+    else {
+        computerScore++;
+        roundWinner = 'computer';
+    }
+    updateScoreMessage(roundWinner,playerSelection,computerSelection);
+}
 
 // Function to assign computer a selection
 function computerPlay()
@@ -24,53 +46,110 @@ function computerPlay()
     }
 }
 
-// Function to play a round of Rock Paper Scissors
-function playRound(playerSelection,computerSelection) {
-    let result = ""
-    result = ('Player Selection : ' + playerSelection + '<br>Computer Selection : ' + computerSelection);
+function isGameOver() {
+    return playerScore === 5 || computerScore === 5;
+}
 
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-        (playerSelection == 'scissors' && computerSelection == 'paper') ||
-        (playerSelection == 'paper' && computerSelection == 'rock')) {
-        
-        playerWin += 1
-        result += ('<br>You win! ' + playerSelection + ' beats ' + computerSelection
-            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
+// UI
 
-        if (playerWin == 5) {
-            result += '<br><br>You won the game! Reload the page to play again';
-            disableButtons();
-        }
+const scoreInfo = document.getElementById('scoreInfo');
+const scoreMessage = document.getElementById('scoreMessage');
+const playerScorePara = document.getElementById('playerScore');
+const computerScorePara = document.getElementById('computerScore');
+const playerSign = document.getElementById('playerSign');
+const computerSign = document.getElementById('computerSign');
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
+const endgameModal = document.getElementById('endgameModal');
+const endgameMsg = document.getElementById('endgameMsg');
+const overlay = document.getElementById('overlay');
+const restartBtn = document.getElementById('restartBtn');
+
+rockBtn.addEventListener('click', () => handleClick('rock'));
+paperBtn.addEventListener('click', () => handleClick('paper'));
+scissorsBtn.addEventListener('click', () => handleClick('scissors'));
+restartBtn.addEventListener('click', restartGame);
+overlay.addEventListener('click',closeEndgameModal);
+
+function handleClick(playerSelection) {
+    if(isGameOver()){
+        openEndgameModal();
+        return;
     }
-    else if (playerSelection == computerSelection) {
-        result += ('<br>It\'s a tie. You both chose ' + playerSelection
-            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
+
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    updateChoices(playerSelection, computerSelection);
+    updateScore();
+
+    if(isGameOver()){
+        openEndgameModal();
+        setFinalMessage();
+    }
+}
+
+function updateChoices(playerSelection, computerSelection) {
+    switch(playerSelection){
+        case 'rock':
+            playerSign.textContent = '🪨';
+            break;
+        case 'paper':
+            playerSign.textContent = '📃';
+            break;
+        case 'scissors':
+            playerSign.textContent = '✂️';
+            break;
+    }
+
+    switch(computerSelection){
+        case 'rock':
+            computerSign.textContent = '🪨';
+            break;
+        case 'paper':
+            computerSign.textContent = '📃';
+            break;
+        case 'scissors':
+            computerSign.textContent = '✂️';
+            break;
+    }
+}
+
+function updateScore() {
+    if (roundWinner == 'tie'){
+        scoreInfo.textContent = "It's a TIE😑";
+    }
+    else if (roundWinner == 'player') {
+        scoreInfo.textContent = 'You WON😃';
+    }
+    else if (roundWinner == 'computer') {
+        scoreInfo.textContent = 'You LOST😭';
+    }
+
+    playerScorePara.textContent = `Player: ${playerScore}`;
+    computerScorePara.textContent = `Computer: ${computerScore}`;
+}
+
+function updateScoreMessage(winner,playerSelection,computerSelection){
+    if (winner === 'player') {
+        scoreMessage.textContent = `${playerSelection.toUpperCase() } beats ${computerSelection.toUpperCase()}`;
+        return;
+    }
+    else if (winner === 'computer') {
+        scoreMessage.textContent = `${playerSelection.toUpperCase() } is beaten by ${computerSelection.toUpperCase()}`;
+        return;
     }
     else {
-        computerWin += 1
-        result += ('<br>You lose! ' + computerSelection + ' beats ' + playerSelection
-            + "<br><br>Player score: " + playerWin + "<br>Computer score: " + computerWin)
-
-        if (computerWin == 5) {
-            result += '<br><br>I won the game! Reload the page to play again';
-            disableButtons();
-        }
+        scoreMessage.textContent = `${playerSelection.toUpperCase() } ties with ${computerSelection.toUpperCase()}`;
+        return;
     }
-
-    document.getElementById('result').innerHTML = result
-    return
 }
 
-function disableButtons(){
-    rockbtn.disabled = true;
-    paperbtn.disabled = true;
-    scissorsbtn.disabled = true;
+function openEndgameModal() {
+    endgameModal.classList.add('active');
+    overlay.classList.add('active');
 }
 
-const rockbtn = document.querySelector('#rockbtn');
-const paperbtn = document.querySelector('#paperbtn');
-const scissorsbtn = document.querySelector('#scissorsbtn');
-
-rockbtn.addEventListener('click',() => playRound("rock",computerPlay()));
-paperbtn.addEventListener('click',() => playRound("paper",computerPlay()));
-scissorsbtn.addEventListener('click',() => playRound("scissors",computerPlay()));
+function closeEndgameModal() {
+    
+}
