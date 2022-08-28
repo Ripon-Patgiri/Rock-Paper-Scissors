@@ -1,5 +1,3 @@
-// GAME WORKINGS
-
 // Variables to store R, P, S.
 let playerSelection;
 let computerSelection;
@@ -14,7 +12,6 @@ function playRound(playerSelection,computerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') ||
         (playerSelection == 'paper' && computerSelection == 'rock')) {
-        
         playerScore++;
         roundWinner = 'player';
     }
@@ -52,6 +49,7 @@ function isGameOver() {
 
 // UI
 
+//Extracting DOM Elements
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMessage = document.getElementById('scoreMessage');
 const playerScorePara = document.getElementById('playerScore');
@@ -66,6 +64,7 @@ const endgameMsg = document.getElementById('endgameMsg');
 const overlay = document.getElementById('overlay');
 const restartBtn = document.getElementById('restartBtn');
 
+//Adding Event Listeners
 rockBtn.addEventListener('click', () => handleClick('rock'));
 paperBtn.addEventListener('click', () => handleClick('paper'));
 scissorsBtn.addEventListener('click', () => handleClick('scissors'));
