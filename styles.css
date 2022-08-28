@@ -1,11 +1,12 @@
 :root {
-    --primary-light: rgb(243, 242, 242);
-    --primary-dark: #424242;
-    --secondary-dark: #aaabac;
-    --secondary-dark-hover: #4a4f57;
-    --secondary-dark-active: #5b5f68;
-    --header: #282a2e;
-    --primary-yellow: #cfb370;
+    --titleFooterArea :  #47423F;
+    --titleTextClr : #ADA692;
+    --bodyBgClr : #527578;
+    --textClr : #FFFFFF;
+    --borderClr : #ADA692;
+    --button : #ADA692;
+    --buttonHover : #47423F;
+    --buttonActive : #B3B1B2;
 }
 
 *,
@@ -23,8 +24,8 @@ html {
 }
 
 body {
-    background-color: var(--primary-dark);
-    color: var(--primary-light);
+    background-color: var(--bodyBgClr);
+    color: var(--textClr);
     font-family: 'Shadows Into Light', cursive;
     font-size: 20px;
     line-height: 1.6;
@@ -47,13 +48,15 @@ button {
     display: flex;
     justify-content: center;
     padding: 15px 0px;
-    background-color: var(--header);
-    border: 1px solid white;
+    background-color: var(--titleFooterArea);
+    border: 1px solid var(--borderClr);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .title {
     font-size: 48px;
-    color: var(--primary-yellow);
+    color: var(--titleTextClr);
     font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
@@ -106,7 +109,7 @@ button {
 
 .btn {
     border-radius: 4px;
-    background-color: var(--secondary-dark);
+    background-color: var(--button);
     border: 1px solid wheat;
 }
 
@@ -116,11 +119,11 @@ button {
 }
 
 .btn:hover {
-    background-color: var(--secondary-dark-hover);
+    background-color: var(--buttonHover);
 }
 
 .btn:active {
-    background-color : var(--secondary-dark-active);
+    background-color : var(--buttonActive);
 }
 
 .sign {
@@ -140,9 +143,11 @@ button {
     gap: 10px;
     width: 100%;
     padding: 10px;
-    color: var(--primary-light);
-    background-color: var(--header);
-    border: 1px solid white;
+    color: var(--textClr);
+    background-color: var(--titleFooterArea);
+    border: 1px solid var(--borderClr);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .fa-github {
@@ -185,7 +190,7 @@ button {
     width: 300px;
     padding: 30px;
     border-radius: 10px;
-    background-color: var(--primary-dark);
+    background-color: var(--bodyBgClr);
     text-align: center;
     font-size: 30px;
     user-select: none;
