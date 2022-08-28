@@ -1,3 +1,3 @@
-# Rock-Paper-Scissors vO
+# Rock-Paper-Scissors
 
-A very basic web console based Rock Paper Scissors Game.
+A Simple Rock Paper Scissors Game developed using HTML , CSS and JavaScript
